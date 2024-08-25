@@ -1,4 +1,4 @@
-import config from './apikey.js'
+// import config from './apikey.js'
 
 // Get references to DOM elements
 const clockElement = document.getElementById('clock');
@@ -36,7 +36,12 @@ backgroundImageElement.src = randomImage;
 
 // Weather and location
 function getWeather(lat, lon) {
-  const apiKey = config.API_KEY;
+  if (config) {
+    const apiKey = config.API_KEY;
+  }
+  else {
+    const apiKey = ''
+  }
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 
   fetch(url)
