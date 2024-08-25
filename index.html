@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang=ko">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -23,8 +23,7 @@
     #app {
       position: relative;
       display: flex;
-      /* justify-content: center; */
-      padding-top: 20vh;
+      justify-content: center;
       align-items: center;
       flex-direction: column;
       height: 100vh;
@@ -54,6 +53,11 @@
       font-size: 24px;
     }
 
+    #location {
+      margin-top: 10px;
+      font-size: 20px;
+    }
+
     #login-form,
     #todo-form {
       margin-top: 20px;
@@ -62,7 +66,7 @@
     #todo-list {
       list-style: none;
       padding: 0;
-      width: 100%;
+      width: 50%;
       margin: 20px auto;
     }
 
@@ -95,6 +99,7 @@
     <img id="background-image" src="" alt="Background Image">
     <div id="clock"></div>
     <div id="weather"></div>
+    <div id="location"></div>
     <div id="login-container">
       <h2>Login</h2>
       <form id="login-form">
@@ -113,7 +118,7 @@
     </div>
   </div>
 
-  <script type='module' src="app.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 
 </html>

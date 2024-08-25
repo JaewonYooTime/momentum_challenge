@@ -1,8 +1,9 @@
-import config from "./apikey.js"
+import config from './apikey.js'
 
 // Get references to DOM elements
 const clockElement = document.getElementById('clock');
 const weatherElement = document.getElementById('weather');
+const locationElement = document.getElementById('location');
 const backgroundImageElement = document.getElementById('background-image');
 const loginContainer = document.getElementById('login-container');
 const todoContainer = document.getElementById('todo-container');
@@ -19,15 +20,15 @@ function showClock() {
 }
 
 // Update the clock every second
-showClock();
 setInterval(showClock, 1000);
 
 // Random background image from a list of predefined images
 const backgroundImages = [
-  'https://plus.unsplash.com/premium_photo-1678566111481-8e275550b700?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'https://images.unsplash.com/photo-1623520333087-62b8793e3d23?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'https://images.unsplash.com/photo-1623520527569-fee1da87f598?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'https://images.unsplash.com/photo-1623479322729-28b25c16b011?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg',  // Nature 1
+  'https://images.pexels.com/photos/3573382/pexels-photo-3573382.jpeg', // Nature 2
+  'https://images.pexels.com/photos/301640/pexels-photo-301640.jpeg',  // City 1
+  'https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg',  // Beach
+  'https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg'  // Mountains
 ];
 
 const randomImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
@@ -43,7 +44,9 @@ function getWeather(lat, lon) {
     .then(data => {
       const temp = data.main.temp;
       const weather = data.weather[0].description;
+      const location = data.name;  // Get location name (city)
       weatherElement.innerText = `Temperature: ${temp}°C, ${weather}`;
+      locationElement.innerText = `Location: ${location}`;  // Display the city name
     })
     .catch(error => console.error('Error fetching weather:', error));
 }
